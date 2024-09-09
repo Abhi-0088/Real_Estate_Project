@@ -1,0 +1,110 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python real_estate_ml_project/src/data/data_ingestion.py
+    deps:
+    - path: real_estate_ml_project/src/data/data_ingestion.py
+      hash: md5
+      md5: 2052ac634b845d7dbaee0c2d9183706f
+      size: 7556
+    outs:
+    - path: real_estate_ml_project/data/processed
+      hash: md5
+      md5: 173d22a30ee1efb8251d0c8330546e99.dir
+      size: 3847297
+      nfiles: 1
+  feature_engineering:
+    cmd: python real_estate_ml_project/src/data/feature_engineering.py
+    deps:
+    - path: real_estate_ml_project/data/processed
+      hash: md5
+      md5: 173d22a30ee1efb8251d0c8330546e99.dir
+      size: 3847297
+      nfiles: 1
+    - path: real_estate_ml_project/src/data/feature_engineering.py
+      hash: md5
+      md5: a0f4787697f3fbfc5eb6967185405cb1
+      size: 14641
+    outs:
+    - path: real_estate_ml_project/data/featured_data
+      hash: md5
+      md5: 4f09a0d2bb405bf7bcb1048fb7b019cf.dir
+      size: 630475
+      nfiles: 1
+  outlier_treatment:
+    cmd: python real_estate_ml_project/src/outliers/outlier_treatment.py
+    deps:
+    - path: real_estate_ml_project/data/featured_data
+      hash: md5
+      md5: 4f09a0d2bb405bf7bcb1048fb7b019cf.dir
+      size: 630475
+      nfiles: 1
+    - path: real_estate_ml_project/src/outliers/outlier_treatment.py
+      hash: md5
+      md5: 8e39e053fefaff298198a157b40121f3
+      size: 3543
+    outs:
+    - path: real_estate_ml_project/data/outliers_treated
+      hash: md5
+      md5: d758c0ee831822f6caa17b1942c53638.dir
+      size: 649420
+      nfiles: 1
+  missing_values_imputation:
+    cmd: python real_estate_ml_project/src/missing_values/missing_values_imputation.py
+    deps:
+    - path: real_estate_ml_project/data/outliers_treated
+      hash: md5
+      md5: d758c0ee831822f6caa17b1942c53638.dir
+      size: 649420
+      nfiles: 1
+    - path: real_estate_ml_project/src/missing_values/missing_values_imputation.py
+      hash: md5
+      md5: fb6123fe5042ef03c775ebd3572b2525
+      size: 5065
+    outs:
+    - path: real_estate_ml_project/data/missing_value_imputation
+      hash: md5
+      md5: ea7bcea1a3a02143dabd1c3de23aa44a.dir
+      size: 345869
+      nfiles: 1
+  feature_selection:
+    cmd: python real_estate_ml_project/src/feature_selection/feature_selection.py
+    deps:
+    - path: real_estate_ml_project/data/missing_value_imputation
+      hash: md5
+      md5: ea7bcea1a3a02143dabd1c3de23aa44a.dir
+      size: 345869
+      nfiles: 1
+    - path: real_estate_ml_project/src/feature_selection/feature_selection.py
+      hash: md5
+      md5: 83ec14ff24c777989bf566aee8ccb6e2
+      size: 9539
+    outs:
+    - path: real_estate_ml_project/data/feature_selection
+      hash: md5
+      md5: d43a25dc38322235da0f858811f48994.dir
+      size: 259919
+      nfiles: 1
+  model_selection:
+    cmd: python real_estate_ml_project/src/models/model_selection.py
+    deps:
+    - path: real_estate_ml_project/data/feature_selection
+      hash: md5
+      md5: d43a25dc38322235da0f858811f48994.dir
+      size: 259919
+      nfiles: 1
+    - path: real_estate_ml_project/src/feature_selection/feature_selection.py
+      hash: md5
+      md5: 83ec14ff24c777989bf566aee8ccb6e2
+      size: 9539
+    outs:
+    - path: real_estate_ml_project/data/final_x_train
+      hash: md5
+      md5: c94c4964c55a5baff5e0d4afc9600f6a.dir
+      size: 231618
+      nfiles: 1
+    - path: real_estate_ml_project/models
+      hash: md5
+      md5: d455e970bc8989fe0b3f3697a9be3f16.dir
+      size: 1468867
+      nfiles: 1
