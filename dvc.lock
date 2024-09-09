@@ -8,11 +8,10 @@ stages:
       md5: 2052ac634b845d7dbaee0c2d9183706f
       size: 7556
     outs:
-    - path: data/processed
+    - path: data/processed/preprocessed_dataset_1.csv
       hash: md5
-      md5: 173d22a30ee1efb8251d0c8330546e99.dir
+      md5: 848ed6ca03881a4f6618391c571625ca
       size: 3847297
-      nfiles: 1
   feature_engineering:
     cmd: python src/data/feature_engineering.py
     deps:
@@ -26,11 +25,10 @@ stages:
       md5: a2ddb1f8e9bb8d0a7bd1cca9badaec8d
       size: 14572
     outs:
-    - path: data/featured_data
+    - path: data/featured_data/preprocessed_dataset_v2.csv
       hash: md5
-      md5: 4f09a0d2bb405bf7bcb1048fb7b019cf.dir
+      md5: bd06ae13aa044e2c7a3f28da956d4f60
       size: 630475
-      nfiles: 1
   outlier_treatment:
     cmd: python src/outliers/outlier_treatment.py
     deps:
@@ -44,11 +42,10 @@ stages:
       md5: c65f5ecc52c4bf81c655efc7d6f5d842
       size: 3497
     outs:
-    - path: data/outliers_treated
+    - path: data/outliers_treated/outlier_treated_data.csv
       hash: md5
-      md5: d758c0ee831822f6caa17b1942c53638.dir
+      md5: e5272be80e3006b9dff893df6c8aba4f
       size: 649420
-      nfiles: 1
   missing_values_imputation:
     cmd: python src/missing_values/missing_values_imputation.py
     deps:
@@ -62,11 +59,10 @@ stages:
       md5: bbd59b51b25739cb0ecf720b1561f6eb
       size: 5019
     outs:
-    - path: data/missing_value_imputation
+    - path: data/missing_value_imputation/missing_value_imputated_data.csv
       hash: md5
-      md5: ea7bcea1a3a02143dabd1c3de23aa44a.dir
+      md5: 9f59a3787b8b2c45935c53c1176c4c3f
       size: 345869
-      nfiles: 1
   feature_selection:
     cmd: python src/feature_selection/feature_selection.py
     deps:
@@ -80,11 +76,10 @@ stages:
       md5: c755369465cbb0a508eb2674848d906e
       size: 9493
     outs:
-    - path: data/feature_selection
+    - path: data/feature_selection/post_feature_selection_data.csv
       hash: md5
-      md5: d43a25dc38322235da0f858811f48994.dir
+      md5: 32b52a23cca0bff9866372705a6d55d3
       size: 259919
-      nfiles: 1
   model_selection:
     cmd: python src/models/model_selection.py
     deps:

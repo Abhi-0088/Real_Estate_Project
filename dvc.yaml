@@ -4,7 +4,7 @@ stages:
     deps:
     - src/data/data_ingestion.py
     outs:
-    - data/processed
+    - data/processed/preprocessed_dataset_1.csv
 
   feature_engineering:
     cmd: python src/data/feature_engineering.py
@@ -12,28 +12,28 @@ stages:
     - data/processed
     - src/data/feature_engineering.py
     outs:
-    - data/featured_data
+    - data/featured_data/preprocessed_dataset_v2.csv
   outlier_treatment:
     cmd: python src/outliers/outlier_treatment.py
     deps:
     - data/featured_data
     - src/outliers/outlier_treatment.py
     outs:
-    - data/outliers_treated
+    - data/outliers_treated/outlier_treated_data.csv
   missing_values_imputation:
     cmd: python src/missing_values/missing_values_imputation.py
     deps:
     - data/outliers_treated
     - src/missing_values/missing_values_imputation.py
     outs:
-    - data/missing_value_imputation
+    - data/missing_value_imputation/missing_value_imputated_data.csv
   feature_selection:
     cmd: python src/feature_selection/feature_selection.py
     deps:
     - data/missing_value_imputation
     - src/feature_selection/feature_selection.py
     outs:
-    - data/feature_selection
+    - data/feature_selection/post_feature_selection_data.csv
 
   model_selection:
     cmd: python src/models/model_selection.py
