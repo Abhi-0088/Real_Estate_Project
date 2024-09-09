@@ -135,9 +135,9 @@ def save_data(final_df:pd.DataFrame,data_path:str)->None:
 
 def main():
     try:
-        df = load_data(data_path = "Real_Estate_ML_Project/data/outliers_treated/outlier_treated_data.csv")
+        df = load_data(data_path = "data/outliers_treated/outlier_treated_data.csv")
         final_df = missing_values_imputation(df)
-        save_data(final_df,data_path="Real_Estate_ML_Project/data")
+        save_data(final_df,data_path="data")
     except Exception as e:
         print(f"Error: {e}")
         logging.error("Error Occured in missing_value_imputation.py")

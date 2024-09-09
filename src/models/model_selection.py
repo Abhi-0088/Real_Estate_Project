@@ -386,9 +386,9 @@ def final_model_selection(df:pd.DataFrame,pipeline_datapath:str,final_df_datapat
 
 def main():
     try:
-        df = load_data("Real_Estate_ML_Project/data/feature_selection/post_feature_selection_data.csv")
+        df = load_data("data/feature_selection/post_feature_selection_data.csv")
         model_selection(df)
-        final_model_selection(df,pipeline_datapath="C:/Users/abhil/OneDrive/Desktop/real_estate_project/Real_Estate_ML_Project",final_df_datapath="C:/Users/abhil/OneDrive/Desktop/real_estate_project/Real_Estate_ML_Project/data/")
+        final_model_selection(df,pipeline_datapath="C:/Users/abhil/OneDrive/Desktop/real_estate_project/Real_Estate_ML_Project",final_df_datapath="C:/Users/abhil/OneDrive/Desktop/real_estate_project/Real_Estate_ML_Project/data")
     except Exception as e:
         logger.error("Error occurd in model_selection.py-> ",e)
         print("Error occured in model_selection.py\n")
@@ -397,82 +397,4 @@ def main():
 if __name__ == "__main__":
     main()
 
-
-
-# ### Hyperparameter Tuning
-# from sklearn.model_selection import GridSearchCV
-# param_grid = {
-#     'regressor__n_estimators': [50, 100, 200, 300],
-#     'regressor__max_depth': [None, 10, 20, 30],
-#     'regressor__max_samples':[0.1, 0.25, 0.5, 1.0],
-#     'regressor__max_features': ['auto', 'sqrt']
-# }
-# columns_to_encode = ['property_type','sector', 'balcony', 'agePossession', 'furnishing_type', 'luxury_category', 'floor_category']
-
-# # Creating a column transformer for preprocessing
-# preprocessor = ColumnTransformer(
-#     transformers=[
-#         ('num', StandardScaler(), ['bedRoom', 'bathroom', 'built_up_area', 'servant room', 'store room']),
-#         ('cat', OrdinalEncoder(), columns_to_encode),
-#         ('cat1',OneHotEncoder(drop='first',sparse_output=False),['agePossession']),
-#         ('target_enc', ce.TargetEncoder(), ['sector'])
-#     ], 
-#     remainder='passthrough'
-# )
-# pipeline = Pipeline([
-#     ('preprocessor', preprocessor),
-#     ('regressor', RandomForestRegressor())
-# ])
-# kfold = KFold(n_splits=10, shuffle=True, random_state=42)
-# search = GridSearchCV(pipeline, param_grid, cv=kfold, scoring='r2', n_jobs=-1, verbose=4)
-# search.fit(X, y_transformed)
-# final_pipe = search.best_estimator_
-# final_pipe.fit(X,y_transformed)
-# # search.best_params_
-# # search.best_score_
-# y_pred = np.expm1(final_pipe.predict(X))
-# mae = mean_absolute_error(y,y_pred)
-# # print(f'MAE is {mae}')
-# param_grid_2 = {
-#     'regressor__n_estimators': [50, 100, 200, 300],
-#     'regressor__max_depth': [None, 10, 20, 30],
-#     'regressor__min_child_weight':[None,1,5,10],
-#     'regressor__learning_rate': [0.01,0.1,0.4],
-#     'regressor__gamma': [0,0.1,0.2]
-# }
-# pipeline = Pipeline([
-#     ('preprocessor', preprocessor),
-#     ('regressor', XGBRegressor())
-# ])
-# k_fold = KFold(n_splits=10,shuffle=True,random_state=42)
-# search_2 = GridSearchCV(pipeline, param_grid_2, cv=kfold, scoring='r2', n_jobs=-1, verbose=4)
-# search_2.fit(X,y_transformed)
-# final_pipe_2 = search_2.best_estimator_
-# final_pipe_2.fit(X,y_transformed)
-# # search_2.best_params_
-# # search_2.best_score_
-# y_hat = np.expm1(final_pipe_2.predict(X))
-# mae = mean_absolute_error(y, y_hat)
-
-# # print(f"Mean Absolute Error (MAE): {mae}")
-# ### Exporting the model
-# preprocessor = ColumnTransformer(
-#     transformers=[
-#         ('num', StandardScaler(), ['bedRoom', 'bathroom', 'built_up_area', 'servant room', 'store room']),
-#         ('cat', OrdinalEncoder(), columns_to_encode),
-#         ('cat1',OneHotEncoder(drop='first',sparse_output=False),['sector','agePossession'])
-#     ], 
-#     remainder='passthrough'
-# )
-# pipeline = Pipeline([
-#     ('preprocessor', preprocessor),
-#     ('regressor', RandomForestRegressor(n_estimators=500))
-# ])
-# pipeline.fit(X,y_transformed)
-# import pickle
-
-# with open('pipeline.pkl', 'wb') as file:
-#     pickle.dump(pipeline, file)
-# with open('df.pkl', 'wb') as file:
-#     pickle.dump(X, file)
 

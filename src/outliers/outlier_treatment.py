@@ -119,9 +119,9 @@ def save_data(final_df:pd.DataFrame,data_path:str)->None:
 
 def main():
     try:
-        df = load_data(data_path='Real_Estate_ML_Project/data/featured_data/preprocessed_dataset_v2.csv')
+        df = load_data(data_path='data/featured_data/preprocessed_dataset_v2.csv')
         fianl_df = outlier_treatment(df)
-        save_data(fianl_df,data_path="Real_Estate_ML_Project/data")
+        save_data(fianl_df,data_path="data")
     except:
         logging.error("Error Occured in outlier_treatment.py")
 

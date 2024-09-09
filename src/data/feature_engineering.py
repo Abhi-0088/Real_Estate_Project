@@ -363,9 +363,9 @@ def save_data(final_df:pd.DataFrame,data_path:str)->None:
 
 def main():
     try:
-        df = load_data(data_path='Real_Estate_ML_Project/data/processed/preprocessed_dataset_1.csv')
-        final_df = feature_engineering(df,data_path_houses="Real_Estate_ML_Project/data/raw/appartments.csv")
-        save_data(final_df,data_path='Real_Estate_ML_Project/data')
+        df = load_data(data_path='data/processed/preprocessed_dataset_1.csv')
+        final_df = feature_engineering(df,data_path_houses="data/raw/appartments.csv")
+        save_data(final_df,data_path='data')
     except:
         logging.error("Error Occured in feature_engineering.py")
 

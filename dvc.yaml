@@ -1,45 +1,45 @@
 stages:
   data_ingestion:
-    cmd: python real_estate_ml_project/src/data/data_ingestion.py
+    cmd: python src/data/data_ingestion.py
     deps:
-    - real_estate_ml_project/src/data/data_ingestion.py
+    - src/data/data_ingestion.py
     outs:
-    - real_estate_ml_project/data/processed
+    - data/processed
 
   feature_engineering:
-    cmd: python real_estate_ml_project/src/data/feature_engineering.py
+    cmd: python src/data/feature_engineering.py
     deps:
-    - real_estate_ml_project/data/processed
-    - real_estate_ml_project/src/data/feature_engineering.py
+    - data/processed
+    - src/data/feature_engineering.py
     outs:
-    - real_estate_ml_project/data/featured_data
+    - data/featured_data
   outlier_treatment:
-    cmd: python real_estate_ml_project/src/outliers/outlier_treatment.py
+    cmd: python src/outliers/outlier_treatment.py
     deps:
-    - real_estate_ml_project/data/featured_data
-    - real_estate_ml_project/src/outliers/outlier_treatment.py
+    - data/featured_data
+    - src/outliers/outlier_treatment.py
     outs:
-    - real_estate_ml_project/data/outliers_treated
+    - data/outliers_treated
   missing_values_imputation:
-    cmd: python real_estate_ml_project/src/missing_values/missing_values_imputation.py
+    cmd: python src/missing_values/missing_values_imputation.py
     deps:
-    - real_estate_ml_project/data/outliers_treated
-    - real_estate_ml_project/src/missing_values/missing_values_imputation.py
+    - data/outliers_treated
+    - src/missing_values/missing_values_imputation.py
     outs:
-    - real_estate_ml_project/data/missing_value_imputation
+    - data/missing_value_imputation
   feature_selection:
-    cmd: python real_estate_ml_project/src/feature_selection/feature_selection.py
+    cmd: python src/feature_selection/feature_selection.py
     deps:
-    - real_estate_ml_project/data/missing_value_imputation
-    - real_estate_ml_project/src/feature_selection/feature_selection.py
+    - data/missing_value_imputation
+    - src/feature_selection/feature_selection.py
     outs:
-    - real_estate_ml_project/data/feature_selection
+    - data/feature_selection
 
   model_selection:
-    cmd: python real_estate_ml_project/src/models/model_selection.py
+    cmd: python src/models/model_selection.py
     deps:
-    - real_estate_ml_project/data/feature_selection
-    - real_estate_ml_project/src/feature_selection/feature_selection.py
+    - data/feature_selection
+    - src/feature_selection/feature_selection.py
     outs:
-    - real_estate_ml_project/data/final_x_train
-    - real_estate_ml_project/models
+    - data/final_x_train
+    - models

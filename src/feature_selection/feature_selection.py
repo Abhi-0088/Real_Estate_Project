@@ -274,9 +274,9 @@ def save_data(final_df:pd.DataFrame,data_path:str)->None:
 
 def main():
     try:
-        df = load_data("Real_Estate_ML_Project/data/missing_value_imputation/missing_value_imputated_data.csv")
+        df = load_data("data/missing_value_imputation/missing_value_imputated_data.csv")
         final_df = feature_selection(df)
-        save_data(final_df,data_path="Real_Estate_ML_Project/data")
+        save_data(final_df,data_path="data")
     except Exception as e:
         print(f"Error: {e}")
         logger.error("Error Occured in Feature Selection.py")
