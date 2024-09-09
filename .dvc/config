@@ -1,0 +1,4 @@
+[core]
+    remote = myremote
+['remote "myremote"']
+    url = C:\Users\abhil\AppData\Local\Temp\real_state_project_data_tracking
