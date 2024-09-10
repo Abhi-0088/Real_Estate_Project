@@ -3,6 +3,14 @@ stages:
   data_ingestion:
     cmd: python src/data/data_ingestion.py
     deps:
+    - path: data/raw/appartments.csv
+      hash: md5
+      md5: 6f85f90c1e610969b4f21ec52817a2f8
+      size: 272721
+    - path: data/raw/gurgaon_properties.csv
+      hash: md5
+      md5: c5eab2e54c34717828a1075040325e56
+      size: 6837338
     - path: src/data/data_ingestion.py
       hash: md5
       md5: 2052ac634b845d7dbaee0c2d9183706f

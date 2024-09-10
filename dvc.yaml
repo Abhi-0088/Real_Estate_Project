@@ -3,6 +3,8 @@ stages:
     cmd: python src/data/data_ingestion.py
     deps:
     - src/data/data_ingestion.py
+    - data/raw/appartments.csv
+    - data/raw/gurgaon_properties.csv
     outs:
     - data/processed/preprocessed_dataset_1.csv
 
