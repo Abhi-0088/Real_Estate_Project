@@ -111,3 +111,23 @@ stages:
       md5: d455e970bc8989fe0b3f3697a9be3f16.dir
       size: 1468867
       nfiles: 1
+  data_processing:
+    cmd: python src/data/data_processing.py
+    deps:
+    - path: data/raw/appartments.csv
+      hash: md5
+      md5: 6f85f90c1e610969b4f21ec52817a2f8
+      size: 272721
+    - path: data/raw/gurgaon_properties.csv
+      hash: md5
+      md5: c5eab2e54c34717828a1075040325e56
+      size: 6837338
+    - path: src/data/data_processing.py
+      hash: md5
+      md5: 743c51c2a7c0ae16997b0dee0ecfc949
+      size: 7557
+    outs:
+    - path: data/processed/preprocessed_dataset_1.csv
+      hash: md5
+      md5: 848ed6ca03881a4f6618391c571625ca
+      size: 3847297

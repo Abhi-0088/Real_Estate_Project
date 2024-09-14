@@ -4,7 +4,7 @@ import pandas as pd
 import os
 import logging
 
-logger = logging.getLogger('data_ingestion')
+logger = logging.getLogger('data_processing')
 logger.setLevel('DEBUG')
 
 file_handler = logging.FileHandler('error.log')
