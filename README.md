@@ -1,57 +1,31 @@
-Real_Estate_ML_Project
-==============================
+# Real Estate Project
 
-A real estate based Machine Learning project
+## Overview
 
-Project Organization
-------------
+This project provides a comprehensive real estate platform that includes features such as price prediction, data analysis, and recommendations. It leverages data scraping and machine learning techniques to offer accurate price predictions, insightful analysis, and personalized recommendations for real estate enthusiasts, buyers, and sellers.
 
-    ├── LICENSE
-    ├── Makefile           <- Makefile with commands like `make data` or `make train`
-    ├── README.md          <- The top-level README for developers using this project.
-    ├── data
-    │   ├── external       <- Data from third party sources.
-    │   ├── interim        <- Intermediate data that has been transformed.
-    │   ├── processed      <- The final, canonical data sets for modeling.
-    │   └── raw            <- The original, immutable data dump.
-    │
-    ├── docs               <- A default Sphinx project; see sphinx-doc.org for details
-    │
-    ├── models             <- Trained and serialized models, model predictions, or model summaries
-    │
-    ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-    │                         the creator's initials, and a short `-` delimited description, e.g.
-    │                         `1.0-jqp-initial-data-exploration`.
-    │
-    ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
-    │
-    ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-    │   └── figures        <- Generated graphics and figures to be used in reporting
-    │
-    ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-    │                         generated with `pip freeze > requirements.txt`
-    │
-    ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
-    ├── src                <- Source code for use in this project.
-    │   ├── __init__.py    <- Makes src a Python module
-    │   │
-    │   ├── data           <- Scripts to download or generate data
-    │   │   └── make_dataset.py
-    │   │
-    │   ├── features       <- Scripts to turn raw data into features for modeling
-    │   │   └── build_features.py
-    │   │
-    │   ├── models         <- Scripts to train models and then use trained models to make
-    │   │   │                 predictions
-    │   │   ├── predict_model.py
-    │   │   └── train_model.py
-    │   │
-    │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
-    │       └── visualize.py
-    │
-    └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
+## Project Structure
 
+- `.dvc`: Directory for Data Version Control (DVC) configuration and metadata.
+- `app`: Contains Streamlit application files for the user interface.
+- `data/raw`: Directory for raw data files.
+- `notebooks`: Jupyter notebooks for data exploration and experimentation.
+- `src`: Source code for the project, including machine learning models and utilities.
+- `.dvcignore`: Specifies files and directories to ignore for DVC.
+- `.gitignore`: Specifies files and directories to ignore for Git.
+- `README.md`: This file, providing an overview and instructions for the project.
+- `dvc.lock`: DVC lock file for tracking dependencies and data versions.
+- `dvc.yaml`: DVC configuration file for defining data and pipeline stages.
+- `params.yaml`: Configuration file for hyperparameters and model settings.
+- `requirements.txt`: List of Python dependencies required for the project.
 
---------
+## Features
 
-<p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
+1. **Price Prediction Model**: 
+   - Predicts property prices based on features like the number of bedrooms, bathrooms, age of the property, and furnishing status.
+   
+2. **Data Analysis & Insights**: 
+   - Provides visual insights into real estate trends, price distribution, property comparisons, and more.
+
+3. **Society Recommendation Module**: 
+   - Recommends similar societies based on user input to help discover properties in comparable locations or communities.
