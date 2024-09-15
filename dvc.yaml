@@ -43,5 +43,15 @@ stages:
     - data/feature_selection
     - src/feature_selection/feature_selection.py
     outs:
-    - data/final_x_train
-    - models
+    - data/final_x_train/final_x_train.pkl
+    - data/final_x_train/final_y_train.pkl
+    - model/xg_boost_pipeline.pkl
+  model_evaluation:
+    cmd: python src/models/model_evaluation.py
+    deps:
+    - data/final_x_train/final_x_train.pkl
+    - data/final_x_train/final_y_train.pkl
+    - params.yaml
+    metrics:
+    - model/model_metric.json:
+        cache: false

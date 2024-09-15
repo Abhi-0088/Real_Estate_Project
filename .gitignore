@@ -79,7 +79,7 @@ target/
 /data/
 !/data/raw/appartments.csv
 !/data/raw/gurgaon_prperties.csv
-/models/
+/model/
 
 # Mac OS-specific storage files
 .DS_Store

@@ -368,21 +368,25 @@ def final_model_selection(df:pd.DataFrame,pipeline_datapath:str,final_df_datapat
     print("MAE of final_model is-> ", mae)
     logger.debug("MAE of final_model is-> ", str(mae))
 
-    pipeline_datapath = os.path.join(pipeline_datapath,'models')
+    pipeline_datapath = os.path.join(pipeline_datapath,'model')
     os.makedirs(pipeline_datapath,exist_ok=True);
 
     final_df_datapath = os.path.join(final_df_datapath,'final_x_train')
     os.makedirs(final_df_datapath,exist_ok=True);
 
     pipeline_datapath = os.path.join(pipeline_datapath,"xg_boost_pipeline.pkl")
-    final_df_datapath = os.path.join(final_df_datapath,"final_x_train.pkl")
+    final_x_train_datapath = os.path.join(final_df_datapath,"final_x_train.pkl")
+    final_y_train_datapath = os.path.join(final_df_datapath,"final_y_train.pkl")
 
 
     with open(pipeline_datapath, 'wb') as file:
         pickle.dump(pipeline, file)
     
-    with open(final_df_datapath,'wb') as file:
+    with open(final_x_train_datapath,'wb') as file:
         pickle.dump(X,file)
+
+    with open(final_y_train_datapath,'wb') as file:
+        pickle.dump(y,file)
 
 def main():
     try:

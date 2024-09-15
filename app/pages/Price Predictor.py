@@ -10,7 +10,7 @@ st.set_page_config(page_title="Viz Demo")
 with open('C:/Users/abhil/OneDrive/Desktop/Real_Estate_Project/Real_Estate_ML_Project/data/final_x_train/final_x_train.pkl','rb') as file:
     df = pickle.load(file)
 
-with open('C:/Users/abhil/OneDrive/Desktop/Real_Estate_Project/Real_Estate_ML_Project/models/xg_boost_pipeline.pkl','rb') as file:
+with open('C:/Users/abhil/OneDrive/Desktop/Real_Estate_Project/Real_Estate_ML_Project/model/xg_boost_pipeline.pkl','rb') as file:
     pipeline = pickle.load(file)
 
 

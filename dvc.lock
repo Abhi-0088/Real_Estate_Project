@@ -101,16 +101,18 @@ stages:
       md5: c755369465cbb0a508eb2674848d906e
       size: 9493
     outs:
-    - path: data/final_x_train
+    - path: data/final_x_train/final_x_train.pkl
       hash: md5
-      md5: c94c4964c55a5baff5e0d4afc9600f6a.dir
+      md5: 548cf5caa117fb4d43b5ca6b1914ae4e
       size: 231618
-      nfiles: 1
-    - path: models
+    - path: data/final_x_train/final_y_train.pkl
       hash: md5
-      md5: d455e970bc8989fe0b3f3697a9be3f16.dir
+      md5: c3c704403d07d8e2482be5c9ef7ea5ef
+      size: 89349
+    - path: model/xg_boost_pipeline.pkl
+      hash: md5
+      md5: c8788f51c3f039564643d955140e7fa6
       size: 1468867
-      nfiles: 1
   data_processing:
     cmd: python src/data/data_processing.py
     deps:
@@ -131,3 +133,23 @@ stages:
       hash: md5
       md5: 848ed6ca03881a4f6618391c571625ca
       size: 3847297
+  model_evaluation:
+    cmd: python src/models/model_evaluation.py
+    deps:
+    - path: data/final_x_train/final_x_train.pkl
+      hash: md5
+      md5: 548cf5caa117fb4d43b5ca6b1914ae4e
+      size: 231618
+    - path: data/final_x_train/final_y_train.pkl
+      hash: md5
+      md5: c3c704403d07d8e2482be5c9ef7ea5ef
+      size: 89349
+    - path: params.yaml
+      hash: md5
+      md5: f3ecf1aa14dfe38f3fe20eac6a4a4eb7
+      size: 57
+    outs:
+    - path: model/model_metric.json
+      hash: md5
+      md5: 2e7d020473369cd25f29a85c500d1683
+      size: 73
