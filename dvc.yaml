@@ -53,5 +53,4 @@ stages:
     - data/final_x_train/final_y_train.pkl
     - params.yaml
     metrics:
-    - model/model_metric.json:
-        cache: false
+    - model/model_metric.json

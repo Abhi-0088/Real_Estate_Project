@@ -146,10 +146,10 @@ stages:
       size: 89349
     - path: params.yaml
       hash: md5
-      md5: f3ecf1aa14dfe38f3fe20eac6a4a4eb7
+      md5: 4caf1d13a020723b71c494b24bdf9d04
       size: 57
     outs:
     - path: model/model_metric.json
       hash: md5
-      md5: 2e7d020473369cd25f29a85c500d1683
-      size: 73
+      md5: db73e14009c5a521d3bbfd6854c7c1df
+      size: 71
