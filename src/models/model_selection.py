@@ -392,7 +392,7 @@ def main():
     try:
         df = load_data("data/feature_selection/post_feature_selection_data.csv")
         model_selection(df)
-        final_model_selection(df,pipeline_datapath="C:/Users/abhil/OneDrive/Desktop/real_estate_project/Real_Estate_ML_Project",final_df_datapath="C:/Users/abhil/OneDrive/Desktop/real_estate_project/Real_Estate_ML_Project/data")
+        final_model_selection(df,pipeline_datapath="",final_df_datapath="data")
     except Exception as e:
         logger.error("Error occurd in model_selection.py-> ",e)
         print("Error occured in model_selection.py\n")

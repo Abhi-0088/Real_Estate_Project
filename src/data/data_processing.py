@@ -123,9 +123,9 @@ def save_data(final_df:pd.DataFrame,data_path:str) -> None:
 
 def main():
     try:
-        df = load_data(data_path='C:/Users/abhil/OneDrive/Desktop/real_estate_project/Real_Estate_ML_Project/data/raw/gurgaon_properties.csv')
+        df = load_data(data_path='data/raw/gurgaon_properties.csv')
         preprocessed_df = preprocess_data(df)
-        save_data(preprocessed_df,data_path='C:/Users/abhil/OneDrive/Desktop/real_estate_project/Real_Estate_ML_Project/data')
+        save_data(preprocessed_df,data_path='data')
     except Exception as e:
         print(f"Error :{e}")
         print("Error in Data Ingestion Stage")

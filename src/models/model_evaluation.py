@@ -135,16 +135,16 @@ def main():
     with mlflow.start_run() as run:
 
         try:
-            X_train = load_data('C:/Users/abhil/OneDrive/Desktop/Real_Estate_Project/Real_Estate_ML_Project/data/final_x_train/final_x_train.pkl')
-            y_train = load_data('C:/Users/abhil/OneDrive/Desktop/Real_Estate_Project/Real_Estate_ML_Project/data/final_x_train/final_y_train.pkl')
+            X_train = load_data('data/final_x_train/final_x_train.pkl')
+            y_train = load_data('data/final_x_train/final_y_train.pkl')
 
-            params = load_params('C:/Users/abhil/OneDrive/Desktop/Real_Estate_Project/Real_Estate_ML_Project/params.yaml')['model_evaluation']
+            params = load_params('params.yaml')['model_evaluation']
 
             pipeline = train_model(params)
 
             metrics_dict,fitted_pipeline = evaluate_model(X_train,y_train,pipeline,params)
 
-            save_metrics(metrics_dict,file_path='C:/Users/abhil/OneDrive/Desktop/Real_Estate_Project/Real_Estate_ML_Project/model/model_metric.json')
+            save_metrics(metrics_dict,file_path='model/model_metric.json')
 
             
 
