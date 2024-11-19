@@ -4,10 +4,21 @@ import logging
 import os
 import dagshub
 
-mlflow.set_tracking_uri("https://dagshub.com/Abhi-0088/dagshub-demo.mlflow")
 
-os.environ['MLFLOW_TRACKING_USERNAME'] = 'Abhi-0088'
-os.environ['MLFLOW_TRACKING_PASSWORD'] = "2530663e0845a4c358599eaa215e6e04afe4c4ac"
+# Set up DagsHub credentials for MLflow tracking
+dagshub_token = os.getenv("DAGSHUB_PAT")
+if not dagshub_token:
+    raise EnvironmentError("DAGSHUB_PAT environment variable is not set")
+
+os.environ["MLFLOW_TRACKING_USERNAME"] = dagshub_token
+os.environ["MLFLOW_TRACKING_PASSWORD"] = dagshub_token
+
+dagshub_url = "https://dagshub.com"
+repo_owner = "Abhi-0088"
+repo_name = "dagshub-demo"
+
+# Set up MLflow tracking URI
+mlflow.set_tracking_uri(f'{dagshub_url}/{repo_owner}/{repo_name}.mlflow')
 
 
 logger = logging.getLogger("model_registry")
