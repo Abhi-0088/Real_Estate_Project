@@ -7,15 +7,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      -name: checout code
+      - name: checout code
         uses: actions/checkout@v3
-      -name: setup python
+      - name: setup python
         uses: actions/checkout@v2
         with:
           python-version: '3.12'
-      -name: install dependencies
+      - name: install dependencies
         run: |
           pip install -r requirements.txt
-      -name: run pipeline
+      - name: run pipeline
         run: |
           dvc repro
