@@ -146,10 +146,21 @@ stages:
       size: 89349
     - path: params.yaml
       hash: md5
-      md5: 4caf1d13a020723b71c494b24bdf9d04
+      md5: 12b1c983c6236fdbec4a35150d46df87
       size: 57
     outs:
+    - path: model/experiments_info.json
+      hash: md5
+      md5: 3547eacf0842f853b8813c84a74be710
+      size: 82
     - path: model/model_metric.json
       hash: md5
-      md5: db73e14009c5a521d3bbfd6854c7c1df
-      size: 71
+      md5: 6437dc4e2d6be27d955fe5be419b9a3b
+      size: 72
+  model_registry:
+    cmd: python src/models/model_registry.py
+    deps:
+    - path: model/experiments_info.json
+      hash: md5
+      md5: 3547eacf0842f853b8813c84a74be710
+      size: 82

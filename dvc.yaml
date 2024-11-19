@@ -52,5 +52,11 @@ stages:
     - data/final_x_train/final_x_train.pkl
     - data/final_x_train/final_y_train.pkl
     - params.yaml
+    outs:
+    - model/experiments_info.json
     metrics:
     - model/model_metric.json
+  model_registry:
+    cmd: python src/models/model_registry.py
+    deps:
+    - model/experiments_info.json
