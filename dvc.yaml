@@ -53,6 +53,8 @@ stages:
     - data/final_x_train/final_y_train.pkl
     - params.yaml
     outs:
+    - data/final_test_data/final_X_test.pkl
+    - data/final_test_data/final_Y_test.pkl
     - model/experiments_info.json
     metrics:
     - model/model_metric.json

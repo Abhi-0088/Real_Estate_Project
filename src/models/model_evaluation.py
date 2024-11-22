@@ -97,7 +97,7 @@ def train_model(params:dict) -> Pipeline:
         logging.error("Error occured in model training in model evaluation")
         print("Error Occured in model evaluation",e)
 
-def evaluate_model(X_train:pd.DataFrame,y_train:pd.DataFrame,pipeline,params:dict)->Tuple[Dict,Pipeline]:
+def evaluate_model(X_train:pd.DataFrame,y_train:pd.DataFrame,pipeline,params:dict,final_X_test_path:str)->Tuple[Dict,Pipeline]:
     try:
         x_train,x_test,Y_train,Y_test = train_test_split(X_train,y_train,test_size=params['test_size'],random_state=42)
 
@@ -113,6 +113,19 @@ def evaluate_model(X_train:pd.DataFrame,y_train:pd.DataFrame,pipeline,params:dic
             'r2_score' : r2_scr,
             'mae' : mae
         }
+
+        final_test_path = os.path.join(final_X_test_path,"final_test_data")
+        os.makedirs(final_test_path,exist_ok=True)
+
+        final_x_test_path = os.path.join(final_test_path,"final_X_test.pkl")
+        final_y_test_path = os.path.join(final_test_path,"final_Y_test.pkl")
+
+        with open(final_x_test_path,'wb') as x_test_file:
+            pickle.dump(x_test,x_test_file)
+
+        with open(final_y_test_path,'wb') as y_test_file:
+            pickle.dump(Y_test,y_test_file)
+
         logger.debug('model evaluation metrics calculated'  )
         return metrics_dict,fitted_pipeline
 
@@ -152,7 +165,7 @@ def main():
 
             pipeline = train_model(params)
 
-            metrics_dict,fitted_pipeline = evaluate_model(X_train,y_train,pipeline,params)
+            metrics_dict,fitted_pipeline = evaluate_model(X_train,y_train,pipeline,params,final_X_test_path="data/")
 
             save_metrics(metrics_dict,file_path='model/model_metric.json')
 
