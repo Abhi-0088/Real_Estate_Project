@@ -6,6 +6,7 @@ import os
 import pandas as pd
 from sklearn.metrics import  mean_absolute_error,r2_score
 import pickle
+import numpy as np
 
 class TestModelLoading(unittest.TestCase):
 
@@ -73,7 +74,8 @@ class TestModelLoading(unittest.TestCase):
         y_holdout = self.holdout_y_data
 
         # Predict using the new model
-        y_pred_new = self.new_model.predict(X_holdout)
+        y_pred_new = np.expm1(self.new_model.predict(X_holdout))
+
 
         # Calculate performance metrics for the new model
         r2_score_new = r2_score(y_holdout, y_pred_new)
@@ -85,7 +87,7 @@ class TestModelLoading(unittest.TestCase):
         expected_mae = 0.30
 
         # Assert that the new model meets the performance thresholds
-        self.assertGreaterEqual(r2_score_new, expected_r2_score , f'Accuracy should be at least {expected_r2_score}')
+        self.assertGreaterEqual(r2_score_new, expected_r2_score , f'R2 should be at least {expected_r2_score}')
         self.assertLessEqual(mae_new, expected_mae, f'Precision should be at least {expected_mae}')
 
 if __name__ == "__main__":
