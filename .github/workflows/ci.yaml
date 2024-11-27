@@ -54,4 +54,4 @@ jobs:
       - name: Push Docker Imgae to Docker Hub
         if: success()
         run: |
-            docker push ${{secrets.DOCKER_HUB_USERNAME}}//real_estate_app:v1
+            docker push ${{secrets.DOCKER_HUB_USERNAME}}/real_estate_app:v1
