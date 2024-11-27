@@ -49,7 +49,7 @@ jobs:
       - name: Build Docker Image
         if: success()
         run: |
-            docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/real_estate_app:v1
+            docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/real_estate_app:v1 .
         
       - name: Push Docker Imgae to Docker Hub
         if: success()
