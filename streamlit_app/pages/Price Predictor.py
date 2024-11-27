@@ -2,16 +2,24 @@ import streamlit as st
 import pickle
 import pandas as pd
 import numpy as np
+import mlflow
+from model_utils.load_model import get_latest_model_version
+
+model_name = "XGBoost_Model_1"
+model_version = get_latest_model_version(model_name=model_name)
+
+model_uri = f"models:/{model_name}/{model_version}"
+pipeline = mlflow.pyfunc.load_model(model_uri)
 
 st.set_page_config(page_title="Viz Demo")
 
 
 
-with open('C:/Users/abhil/OneDrive/Desktop/Real_Estate_Project/Real_Estate_ML_Project/data/final_x_train/final_x_train.pkl','rb') as file:
+with open('data/final_x_train/final_x_train.pkl','rb') as file:
     df = pickle.load(file)
 
-with open('C:/Users/abhil/OneDrive/Desktop/Real_Estate_Project/Real_Estate_ML_Project/model/xg_boost_pipeline.pkl','rb') as file:
-    pipeline = pickle.load(file)
+# with open('model/xg_boost_pipeline.pkl','rb') as file:
+#     pipeline = pickle.load(file)
 
 
 st.header('Enter your inputs')
